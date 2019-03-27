@@ -1,31 +1,34 @@
 /**
-  Represent a node that holds...
-  o  cargo of interest to the user
-  o  reference to the next node in the list
-*/
+    Represent a node that holds...
+    o cargo of interest to the user
+    o reference to the next node in the list
+  */
 
 public class Node {
   private Object cargoReference;
-  private Node referenceToNextNode;
+  private Node   referenceToNextNode;
 
   /**
-    Construct an instance
-  */
+      Construct an instance
+    */
   public Node( Object cargoReference) {
     this.cargoReference = cargoReference;
+    / default value is fine for Node.next
   }
   public Node( Object cargoReference, Node referenceToNextNode) {
-    this.cargoReference = cargoReference;
-		this.referenceToNextNode = referenceToNextNode;
+    this( cargoReference);
+    this.referenceToNextNode = referenceToNextNode;
   }
 
   /**
-    @return a string representation of this instance
-  */
+      @return a string representation of this instance
+    */
   public String toString() {
-    String result = cargoReference.toString()  // polymorphically use appropriately toString!
-                  + " id " // include a usually-unique identifier for this node
-                  + super.toString();
+    String result =
+    cargoReference.toString()  // polymorphically use appropriately toString!
+    + " id " // include a usually-unique identifier for this node
+    + super.toString();
+
     // Show rest of chain of nodes
     if( referenceToNextNode == null)
     result += " [no next]";
@@ -35,10 +38,14 @@ public class Node {
 
   // classic accessor and mutator
   public Node getReferenceToNextNode() {
-    return this.referenceToNextNode;
+    return referenceToNextNode;
   }
 
   public void setReferenceToNextNode( Node referenceToNextNode) {
     this.referenceToNextNode = referenceToNextNode;
+  }
+
+  public Object getCargoReference() {
+    return cargoReference;
   }
 }
